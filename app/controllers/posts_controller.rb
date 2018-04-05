@@ -10,16 +10,8 @@ class PostsController < ApplicationController
     @comment = Comment.new
   end
 
-  def new
-
-  end
-
   def create
     @post = Post.new(post_params)
-  end
-
-  def edit
-
   end
 
   def update
@@ -33,5 +25,9 @@ class PostsController < ApplicationController
   private
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :content)
   end
 end
